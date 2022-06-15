@@ -60,19 +60,6 @@ In this course, we will learn Laravel from basic to Advance. We will cover every
 - Collections
 - Mutators / Casts
 
-### Security
-
-- Authentication
-    - Email Verification
-    - Password Reset
-    - Custom Multiple Authentication
-    - Multiple Authentication using Breeze
-    - Multiple Authentication using Fortify
-    - Multiple Authentication using Jetstream
-- Authorization
-    - Gate 
-    - Policy
-
 ### Digging Deeper
 - Artisan Console
 - Broadcasting
@@ -91,6 +78,20 @@ In this course, we will learn Laravel from basic to Advance. We will cover every
 - Queues
 - Rate Limiting
 - Task Scheduling
+### Security
+
+- Authentication
+    - Email Verification
+    - Password Reset
+    - Custom Multiple Authentication
+    - Multiple Authentication using Breeze
+    - Multiple Authentication using Fortify
+    - Multiple Authentication using Jetstream
+- Authorization
+    - Gate 
+    - Policy
+
+
 
 ### Testing
 - HTTP Tests
