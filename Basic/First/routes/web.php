@@ -58,3 +58,9 @@ Route::prefix('product')->name('product.')->middleware(['auth','api'])->group(fu
 Route::fallback(function () {
     return "Route Not Found!";
 });
+
+
+
+Route::get('middleware',function(){
+    return "Middleware Response";
+})->middleware('check_age:35');
