@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DemoController;
 use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\ResponseController;
 use App\Http\Controllers\SingleController;
 use Illuminate\Support\Facades\Route;
 
@@ -84,3 +85,7 @@ Route::resources([
 Route::post('form-submit', function () {
     return "SOmething";
 })->name('submit');
+
+
+Route::get('response',[ResponseController::class,'index']);
+Route::get('another-response',[ResponseController::class,'another'])->name('another');
