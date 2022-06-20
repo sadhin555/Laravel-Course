@@ -79,3 +79,8 @@ Route::resources([
     'photos' => PhotoController::class,
     'posts' => PostController::class,
 ]);
+
+
+Route::post('form-submit', function () {
+    return "SOmething";
+})->name('submit');
