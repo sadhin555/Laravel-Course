@@ -5,6 +5,7 @@ use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\ResponseController;
 use App\Http\Controllers\SingleController;
 use App\Http\Controllers\ViewController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 
@@ -100,3 +101,12 @@ Route::get('another-response',[ResponseController::class,'another'])->name('anot
 
 Route::get("view",[ViewController::class,'index']);
 Route::get("second",[ViewController::class,'second']);
+
+Route::get("blade",function(){
+    return view('abc',[
+        "title" => "This is our title",
+        "html" => "<h1>This is H1</h1>",
+        'isActive' => true,
+        "users" => User::all()
+    ]);
+});
