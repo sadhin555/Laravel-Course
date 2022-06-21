@@ -4,6 +4,7 @@ use App\Http\Controllers\DemoController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\ResponseController;
 use App\Http\Controllers\SingleController;
+use App\Http\Controllers\ViewController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -89,3 +90,13 @@ Route::post('form-submit', function () {
 
 Route::get('response',[ResponseController::class,'index']);
 Route::get('another-response',[ResponseController::class,'another'])->name('another');
+
+
+
+# View
+
+// Route::view("view","first");
+
+
+Route::get("view",[ViewController::class,'index']);
+Route::get("second",[ViewController::class,'second']);

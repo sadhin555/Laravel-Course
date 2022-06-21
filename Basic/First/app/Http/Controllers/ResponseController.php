@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ResponseController extends Controller
@@ -24,6 +25,10 @@ class ResponseController extends Controller
 
     public function another()
     {
-        return response("Hello World");
+
+
+      return view("welcome",[
+        'users' => User::all()
+      ]);
     }
 }
