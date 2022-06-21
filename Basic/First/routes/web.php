@@ -7,8 +7,7 @@ use App\Http\Controllers\SingleController;
 use App\Http\Controllers\ViewController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
-
-
+use Illuminate\Support\Facades\Session;
 
 Route::get('/', function () {
     return view('welcome');
@@ -109,4 +108,32 @@ Route::get("blade",function(){
         'isActive' => true,
         "users" => User::all()
     ]);
+});
+
+
+
+# Session
+
+Route::get('set',function(){
+    session()->flash("flash","FLash");
+    session()->put(["test" => "Test Data"]);
+    session(["title" => "Session Title","another" => "Another"]);
+});
+
+Route::get('get',function(){
+
+    // if(session()->has("test")){
+    //     return session("test");
+    // }else{
+    //     return "Not Exists!";
+    // }
+    dd(session()->all());
+
+    return session("flash");
+});
+
+
+Route::get('delete',function(){
+    // session()->forget(["another","test"]);
+    session()->flush();
 });
