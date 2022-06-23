@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DemoController;
 use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\RequestController;
 use App\Http\Controllers\ResponseController;
 use App\Http\Controllers\SingleController;
 use App\Http\Controllers\ViewController;
@@ -115,9 +116,10 @@ Route::get("blade",function(){
 # Session
 
 Route::get('set',function(){
-    session()->flash("flash","FLash");
-    session()->put(["test" => "Test Data"]);
-    session(["title" => "Session Title","another" => "Another"]);
+
+    // session()->flash("flash","FLash");
+    // session()->put(["test" => "Test Data"]);
+    // session(["title" => "Session Title","another" => "Another"]);
 });
 
 Route::get('get',function(){
@@ -137,3 +139,9 @@ Route::get('delete',function(){
     // session()->forget(["another","test"]);
     session()->flush();
 });
+
+
+# Request
+
+Route::get('form',[RequestController::class,'index']);
+Route::post('form',[RequestController::class,'store'])->name('store');
