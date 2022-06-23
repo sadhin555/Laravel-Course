@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\FormSubmitRequest;
 
 class RequestController extends Controller
 {
@@ -11,23 +12,16 @@ class RequestController extends Controller
         return view('form');
     }
 
-    public function store(Request $request)
+    public function store(FormSubmitRequest $request)
     {
-        if($request->hasFile('file')){
-            $img = $request->file('file');
-            dd($img->path());
-        }
 
-        // dd($request->method());
-        // if ($request->is('form/*')) {
-        //     dd($request->ip());
-        // }
-        // // dd($request->path());
-        // dd($request->ip());
-        $name = $request->name;
-        $email = $request->input('email');
-        // dd($request->only(['name','password']));
-        // dd($request->except(['password','email']));
-        return ;
+        // $request->validate([
+        //     'name' => ['required','string'],
+        //     'email' => ['required','email'],
+        //     'password' => ['required','confirmed'],
+        //     'number' => ['required'],
+        //     'file' => ['required','mimes:jpg,png,jpeg'],
+        // ]);
+        return $request->all();
     }
 }
