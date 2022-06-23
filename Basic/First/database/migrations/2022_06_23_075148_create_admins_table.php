@@ -20,10 +20,7 @@ return new class extends Migration
             $table->string('name',200)->nullable();
             $table->string('email')->unique();
             $table->integer('age');
-            $table->float('col_name');
-            $table->text('bio');
-            $table->foreignId('user_id')->constrained('users','id');
-            $table->enum('role',['editor','visitor']);
+            $table->text('bio')->nullable();
             $table->timestamps();
         });
     }
