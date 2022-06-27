@@ -5,6 +5,7 @@ use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\RequestController;
 use App\Http\Controllers\ResponseController;
 use App\Http\Controllers\SingleController;
+use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\ViewController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -145,3 +146,10 @@ Route::get('delete',function(){
 
 Route::get('form',[RequestController::class,'index']);
 Route::post('form',[RequestController::class,'store'])->name('store');
+
+# Query
+
+Route::get('insert',[TeacherController::class,'insert']);
+Route::get('select',[TeacherController::class,'select']);
+Route::get('update',[TeacherController::class,'update']);
+
