@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DemoController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\RequestController;
@@ -151,5 +152,11 @@ Route::post('form',[RequestController::class,'store'])->name('store');
 
 Route::get('insert',[TeacherController::class,'insert']);
 Route::get('select',[TeacherController::class,'select']);
-Route::get('update',[TeacherController::class,'update']);
+// Route::get('update',[TeacherController::class,'update']);
 
+# Create
+
+Route::get('create',[ClientController::class,'index']);
+Route::get('fetch',[ClientController::class,'fetch']);
+Route::get('update',[ClientController::class,'update']);
+Route::get('delete',[ClientController::class,'delete']);
