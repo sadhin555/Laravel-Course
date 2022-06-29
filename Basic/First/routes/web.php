@@ -160,3 +160,4 @@ Route::get('create',[ClientController::class,'index']);
 Route::get('fetch',[ClientController::class,'fetch']);
 Route::get('update',[ClientController::class,'update']);
 Route::get('delete',[ClientController::class,'delete']);
+

@@ -60,9 +60,9 @@ class ClientController extends Controller
 
     public function delete()
     {
-    //    return Client::where('age',">",25)->delete();
+       return Client::find(1)->delete();
 
-    // return Client::withTrashed()->get()->count();
-       return Client::withTrashed() ->where('id', 1)->history()->restore();
+        return 1;
     }
+
 }
