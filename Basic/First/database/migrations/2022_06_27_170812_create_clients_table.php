@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string("password");
             $table->integer('age');
             $table->text("bio");
+            $table->softDeletes();
             $table->timestamps();
         });
     }

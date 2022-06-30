@@ -58,11 +58,28 @@ class ClientController extends Controller
         return $data;
     }
 
+
     public function delete()
     {
-       return Client::find(1)->delete();
+    //    return Client::find(2)->delete();
 
-        return 1;
+        // return Client::where('age','>',25)->delete();
+
+        // return Client::destroy([9,10]);
+        // Client::truncate();
+
+        // return Client::get()->count();
+        //  Client::find(1)->delete();
+        // return Client::onlyTrashed()->get()->count();
+
+        // Client::withTrashed()->find(1)->restore();
+        Client::find(1)->forceDelete();
+    }
+
+    public function scope()
+    {
+        return Client::get()->count();
+
     }
 
 }
