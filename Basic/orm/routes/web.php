@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\District;
+use App\Models\Division;
 use App\Models\Info;
 use App\Models\Post;
 use App\Models\User;
@@ -62,4 +64,11 @@ Route::get('one-to-many',function(){
     //     "name" => "Post 3"
     // ]);
     // return $user->posts->count();
+});
+
+Route::get('has',function(){
+
+    $div = Division::find(5);
+
+    return $div->load('thanas');
 });

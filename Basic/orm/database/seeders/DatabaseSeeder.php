@@ -2,7 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\District;
+use App\Models\Division;
 use App\Models\Info;
+use App\Models\Thana;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -28,6 +31,28 @@ class DatabaseSeeder extends Seeder
                 "address" => "Dhaka $i",
                 "zip_code" => $i % 2 == 0 ? rand(100,200) : null,
                 "phone" => rand(1000,5000),
+            ]);
+        }
+
+
+        for($i = 1;$i<=5;$i++){
+            Division::create([
+                "name" => "Div $i"
+            ]);
+        }
+
+
+        for($i = 1;$i<=10;$i++){
+            District::create([
+                "division_id" => rand(1,5),
+                "name" => "District $i"
+            ]);
+        }
+
+        for($i = 1;$i<=15;$i++){
+            Thana::create([
+                "district_id" => rand(1,10),
+                "name" => "Thana $i"
             ]);
         }
     }
