@@ -13,6 +13,9 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $with = [
+        'info'
+    ];
     /**
      * The attributes that are mass assignable.
      *
@@ -45,6 +48,9 @@ class User extends Authenticatable
 
     public function info() : HasOne
     {
-        return $this->hasOne(Info::class,'user_id','id');
+        return $this->hasOne(Info::class,'user_id','id')->withDefault([
+            "address" => "Default",
+            "zip_code" => "123",
+        ]);
     }
 }
