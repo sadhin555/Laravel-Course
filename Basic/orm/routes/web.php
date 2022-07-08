@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Info;
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpKernel\Profiler\Profile;
@@ -45,4 +46,20 @@ Route::get('one-to-one',function(){
     ]);
 
     return $user;
+});
+
+
+Route::get('one-to-many',function(){
+
+    $post = Post::find(1);
+
+   return $post->user;
+    // Post::create([
+    //     "user_id" => $user->id,
+    //     "name" => "Post Two"
+    // ]);
+    // $user->posts()->create([
+    //     "name" => "Post 3"
+    // ]);
+    // return $user->posts->count();
 });
