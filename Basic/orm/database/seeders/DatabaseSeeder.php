@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\District;
 use App\Models\Division;
 use App\Models\Info;
+use App\Models\Skill;
 use App\Models\Thana;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -25,6 +26,10 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
+        $data = ['PHP','JS','Laravel','Python'];
+        foreach($data as $d){
+            Skill::create(["name" => $d]);
+        }
         for($i = 1;$i<=5;$i++){
             Info::create([
                 "user_id" => $i,

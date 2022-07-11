@@ -4,6 +4,7 @@ use App\Models\District;
 use App\Models\Division;
 use App\Models\Info;
 use App\Models\Post;
+use App\Models\Skill;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpKernel\Profiler\Profile;
@@ -71,4 +72,16 @@ Route::get('has',function(){
     $div = Division::find(5);
 
     return $div->load('thanas');
+});
+
+
+Route::get('many',function(){
+
+    $user = User::find(1);
+   return $skill = Skill::with('users')->find(1);
+    // $user->skills()->attach([1,2]);
+    // $user->skills()->detach([1]);
+
+    // $user->skills()->sync([1,3]);
+    // return $user->load('skills');
 });

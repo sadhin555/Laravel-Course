@@ -59,4 +59,8 @@ class User extends Authenticatable
     public function posts():HasMany{
         return $this->hasMany(Post::class);
     }
+
+    public function skills(){
+        return $this->belongsToMany(Skill::class,"skill_users");
+    }
 }
