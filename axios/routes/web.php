@@ -37,4 +37,5 @@ Route::prefix('crud')->name('crud.')->controller(CrudController::class)->group(f
     Route::get("/","index")->name('index');
     Route::get("show/{curd}","show")->name('show');
     Route::get("/get-data","getData")->name('all');
+    Route::post("delete/{crud}","delete")->name('delete');
 });

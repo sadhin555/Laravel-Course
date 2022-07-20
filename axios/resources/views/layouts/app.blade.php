@@ -33,8 +33,8 @@
                 <ul class="list-group">
                     <li class="list-group-item"><a href="{{ route('crud.index') }}">Crud</a>
                     </li>
-                    <li class="list-group-item"><a href="{{ route('user-check') }}">User Check</a>
-                    </li>
+                    {{-- <li class="list-group-item"><a href="{{ route('user-check') }}">User Check</a>
+                    </li> --}}
                 </ul>
             </div>
             <div class="col-md-9">
