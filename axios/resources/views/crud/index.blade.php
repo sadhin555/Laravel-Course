@@ -215,10 +215,61 @@
                 )
             }
             })
-
-
-
     }
+
+
+        // Store
+
+        let addDataForm = $$("#addDataForm");
+
+        addDataForm.addEventListener("submit", async function  (e){
+            e.preventDefault();
+
+            let name = $$("#name");
+            let nameErr = $$("#nameErr");
+            let image = $$("#image");
+            let imgErr = $$("#imgErr");
+
+            nameErr.innerText = "";
+            imgErr.innerText = "";
+
+            if(name.value == ""){
+                nameErr.innerText = "Field Must not be empty";
+                return false;
+            }
+            if(image.value == ""){
+                imgErr.innerText = "Field Must not be empty";
+                return false;
+            }
+
+
+            let data = new FormData();
+
+            // log(image.files[0])
+            data.append("name",name.value);
+            data.append("image",image.files[0]);
+
+            try{
+                let url = `${base_url}/crud/store`;
+                const res = await axios.post(url,data);
+                Swal.fire({
+  icon: 'success',
+  title: 'Success',
+  text: 'Data save successfully!',
+})
+                getAllData();
+                name.value = "";
+                image.value = null;
+            }catch(err){
+                if(err.response.data.errors.name){
+                    nameErr.innerText = err.response.data.errors.name[0];
+                }
+                if(err.response.data.errors.image){
+                    imgErr.innerText = err.response.data.errors.image[0];
+                }
+            }
+        })
+
 });
 
 

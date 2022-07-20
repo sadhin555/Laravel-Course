@@ -32,4 +32,23 @@ class CrudController extends Controller
         File::deleteFile($file);
         return $crud->delete();
     }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            "name" => ['required','unique:cruds,name'],
+            "image" => ['required','mimes:png,jpg'],
+        ]);
+
+        $crud = Crud::create([
+            "name" => $request->name,
+            "image" => File::upload($request->image,"crud")
+        ]);
+
+        if($crud){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
