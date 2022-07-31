@@ -20,12 +20,24 @@ Route::post('user-exits',[UserCheckController::class,'checkUser'])->name('user-e
 # Auto Suggest Search
 
 Route::get('auto-search',[AutoSearchController::class,'index'])->name('auto-search');
+Route::get('auto-search-product/{key}',[AutoSearchController::class,'searchProducts'])->name('search-products');
 
 
-Route::get('mail',function(){
-    Mail::to("s@Mail.com")->send(new TestMail);
-    return new TestMail;
-});
+
+
+
+
+
+
+
+
+
+
+
+// Route::get('mail',function(){
+//     Mail::to("s@Mail.com")->send(new TestMail);
+//     return new TestMail;
+// });
 
 
 
