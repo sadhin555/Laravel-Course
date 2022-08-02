@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AutoSearchController;
 use App\Http\Controllers\CrudController;
+use App\Http\Controllers\ImageController;
+use App\Http\Controllers\MultidependencyController;
 use App\Http\Controllers\UserCheckController;
 use App\Mail\TestMail;
 use Illuminate\Support\Facades\Mail;
@@ -23,9 +25,15 @@ Route::get('auto-search',[AutoSearchController::class,'index'])->name('auto-sear
 Route::get('auto-search-product/{key}',[AutoSearchController::class,'searchProducts'])->name('search-products');
 
 
+# Multiple Image Upload
+Route::get('multiple-image',[ImageController::class,'index'])->name('multiple-image');
+
+Route::post('multiple-upload',[ImageController::class,'upload'])->name('multiple-upload');
 
 
 
+# Multi Dependency Select
+Route::get('multi-denpendency',[MultidependencyController::class,'index'])->name('multi-denpendency');
 
 
 

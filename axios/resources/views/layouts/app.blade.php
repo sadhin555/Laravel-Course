@@ -37,6 +37,10 @@
                     </li>
                     <li class="list-group-item"><a href="{{ route('auto-search') }}">Auto Search</a>
                     </li>
+                    <li class="list-group-item"><a href="{{ route('multiple-image') }}">Image</a>
+                    </li>
+                    <li class="list-group-item"><a href="{{ route('multi-denpendency') }}">Multi Dependency</a>
+                    </li>
                 </ul>
             </div>
             <div class="col-md-9">
