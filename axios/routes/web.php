@@ -34,8 +34,8 @@ Route::post('multiple-upload',[ImageController::class,'upload'])->name('multiple
 
 # Multi Dependency Select
 Route::get('multi-denpendency',[MultidependencyController::class,'index'])->name('multi-denpendency');
-
-
+Route::get('districts/{id}',[MultidependencyController::class,'districts']);
+Route::get('upazilas/{id}',[MultidependencyController::class,'upazilas']);
 
 
 
