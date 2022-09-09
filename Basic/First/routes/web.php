@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DemoController;
 use App\Http\Controllers\PhotoController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\ViewController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
+use Whoops\Run;
 
 Route::get('/', function () {
     return view('welcome');
@@ -180,4 +182,15 @@ Route::controller(ProductController::class)->name('product.')->prefix('product')
     Route::post('/delete/{product}','delete')->name('delete');
     Route::post('/update/{product}','update')->name('update');
     Route::post('/store','store')->name('store');
+});
+
+
+Route::controller(AuthController::class)->name('auth.')->prefix('auth')->group(function(){
+    Route::get('login','login')->name('login');
+    Route::get('register','register')->name('register');
+    Route::get('dashboard','dashboard')->name('dashboard')->middleware('auth');
+    Route::get('logout','logout')->name('logout')->middleware('auth');
+
+    Route::post('authenticate','authenticate')->name('authenticate');
+    Route::post('store','store')->name('store');
 });

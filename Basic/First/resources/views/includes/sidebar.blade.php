@@ -50,7 +50,11 @@
         <span>Product</span></a>
     </li>
 
-
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('auth.logout') }}">
+            <i class="fas fa-fw fa-chart-area"></i>
+        <span>Logout</span></a>
+    </li>
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
