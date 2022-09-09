@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-
+use Illuminate\Database\Eloquent\Builder;
 class Client extends Model
 {
     use HasFactory,SoftDeletes;
@@ -21,4 +21,18 @@ class Client extends Model
 
     protected $guarded = [];
 
+    // protected static function booted()
+    // {
+    //     static::addGlobalScope('isAdult', function (Builder $builder) {
+    //         $builder->where('age','>',18);
+    //     });
+    // }
+
+    public function scopeIsAdmin($query){
+        $query->where('age','>',18);
+    }
+
+    public function scopeIsAdminTwo($query){
+        $query->where('age','>',18);
+    }
 }

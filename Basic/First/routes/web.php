@@ -3,6 +3,7 @@
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DemoController;
 use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RequestController;
 use App\Http\Controllers\ResponseController;
 use App\Http\Controllers\SingleController;
@@ -163,3 +164,20 @@ Route::get('delete',[ClientController::class,'delete']);
 Route::get('scope',[ClientController::class,'scope']);
 
 
+Route::view('app',"layouts.master");
+Route::view('dash',"backend.dashboard");
+Route::view('cat',"backend.category");
+Route::view('reg',"backend.login");
+
+
+# Product CRUD
+
+Route::controller(ProductController::class)->name('product.')->prefix('product')->group(function(){
+    Route::get('/','index')->name('index');
+    Route::get('/create','create')->name('create');
+    Route::get('/view/{product}','view')->name('view');
+    Route::get('/edit/{product}','edit')->name('edit');
+    Route::post('/delete/{product}','delete')->name('delete');
+    Route::post('/update/{product}','update')->name('update');
+    Route::post('/store','store')->name('store');
+});

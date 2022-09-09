@@ -78,8 +78,9 @@ class ClientController extends Controller
 
     public function scope()
     {
-        return Client::get()->count();
 
+    // return Client::withoutGlobalScope('isAdult')->get();
+    return Client::IsAdmin()->get()->count();
     }
 
 }
