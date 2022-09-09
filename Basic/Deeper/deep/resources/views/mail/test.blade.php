@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Hello {{ $data['name'] }}</h1>
-    <h5>Address : {{ $data['address'] }}</h5>
+    <h1>Hello {{ $data }}</h1>
+
 </body>
 </html>
