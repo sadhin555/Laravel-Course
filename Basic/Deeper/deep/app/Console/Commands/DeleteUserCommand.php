@@ -29,6 +29,7 @@ class DeleteUserCommand extends Command
     public function handle()
     {
 
+        info("hit");
         $users = User::whereNull("email_verified_at")->get();
         foreach($users as $user){
             $user->delete();
