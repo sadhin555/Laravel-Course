@@ -16,7 +16,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 
     Route::post('logout',[LoginController::class,"logout"])->name('logout');
-    Route::get('dashboard',[LoginController::class,"dashboard"])->name('dashboard');
+    Route::get('dashboard',[LoginController::class,"dashboard"])->middleware(['auth:admin','custom_redirect'])->name('dashboard');
+    Route::get('notice',[LoginController::class,"notice"])->name('notice');
 
     # Email verify
 

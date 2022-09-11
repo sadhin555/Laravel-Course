@@ -85,4 +85,12 @@ class LoginController extends Controller
         return redirect()->intended(RouteServiceProvider::ADMIN_HOME.'?verified=1');
     }
 
+    public function notice()
+    {
+        if(!is_null(auth('admin')->email_verified_at)){
+            return redirect()->route('admin.dashboard');
+        }
+        return view('admin.auth.notice');
+    }
+
 }
