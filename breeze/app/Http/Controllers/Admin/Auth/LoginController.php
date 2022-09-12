@@ -87,10 +87,21 @@ class LoginController extends Controller
 
     public function notice()
     {
-        if(!is_null(auth('admin')->email_verified_at)){
+        if(!is_null(auth('admin')->user()->email_verified_at)){
             return redirect()->route('admin.dashboard');
         }
         return view('admin.auth.notice');
+    }
+
+    public function resend(Request $request)
+    {
+        if ($request->user('admin')->hasVerifiedEmail()) {
+            return redirect()->intended(RouteServiceProvider::ADMIN_HOME);
+        }
+
+        $request->user('admin')->sendEmailVerificationNotification();
+
+        return back()->with('status', 'verification-link-sent');
     }
 
 }

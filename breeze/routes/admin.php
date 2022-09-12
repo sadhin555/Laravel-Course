@@ -25,4 +25,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
                 ->middleware(['signed', 'throttle:6,1'])
                 ->name('verification.verify');
 
+
+    Route::post('resend',[LoginController::class,'resend'])->name('resend');
+
 });

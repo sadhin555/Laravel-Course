@@ -8,12 +8,15 @@
 </head>
 <body>
 
+    @if (session('status'))
+        {{ session('status') }}
+    @endif
     <h1>Admin Verification Notice</h1>
     <p>Your email isn't verified yet!</p>
-    <form action="" method="POST">
+    <form action="{{ route('admin.resend') }}" method="POST">
       @csrf
         <button>Resend Email</button>
     </form>
-    <a href=""> Logout</a>
+    <a href="{{ route('admin.logout') }}"> Logout</a>
 </body>
 </html>
