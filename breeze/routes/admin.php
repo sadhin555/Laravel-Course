@@ -2,6 +2,7 @@
 <?php
 
 use App\Http\Controllers\Admin\Auth\LoginController;
+
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->name('admin.')->group(function () {
@@ -27,5 +28,14 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 
     Route::post('resend',[LoginController::class,'resend'])->name('resend');
+
+
+    # Forget Password
+
+    Route::get('forget',[LoginController::class,'forget'])->name('forget');
+    Route::get('reset/{token}',[LoginController::class,'reset'])->name('reset');
+
+    Route::post('send-forget',[LoginController::class,'sendForgetNotification'])->name('send-forget');
+    Route::post('reset-pass',[LoginController::class,'resetPassword'])->name('reset.pass');
 
 });

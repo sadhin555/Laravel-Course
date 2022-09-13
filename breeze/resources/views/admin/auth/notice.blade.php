@@ -17,6 +17,9 @@
       @csrf
         <button>Resend Email</button>
     </form>
-    <a href="{{ route('admin.logout') }}"> Logout</a>
+    <form action="{{ route('admin.logout') }}" method="POST">
+        @csrf
+        <button>Logout</button>
+    </form>
 </body>
 </html>
