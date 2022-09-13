@@ -28,10 +28,10 @@
             dd($data)
         @endphp --}}
 
-        @foreach ($data->users as $user)
+        {{-- @foreach ($data->users as $user)
 
             <h4>{{ $user->name }}</h4>
-        @endforeach
+        @endforeach --}}
         {{-- <form action="{{ route('store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <input type="file" name="file">

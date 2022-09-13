@@ -1,56 +1,21 @@
 <?php
 
-use App\Models\User;
-use App\Mail\TestMail;
-use App\Events\DataEvent;
-use App\Events\TestEvent;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Route;
-use App\Notifications\TestNotification;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Http;
-Route::get('create',function(){
-   return User::first()->delete();
-    // User::create([
-    //     "name" => "test111",
-    //     "email" => "test111@mail.com",
-    //     "password" => "test"
-    // ]);
+use Illuminate\Support\Facades\Route;
 
-    // event(new DataEvent);
-});
 
 
 Route::get('/', function () {
-    // Artisan::call('cache:clear');
-    // $data = "This is my Data";
-    // $user =  User::find(1);
-    // $user->notify(new TestNotification($data));
+    return view('welcome');
+});
 
-    // event(new TestEvent($user));
-    // $data['name'] = "Test User";
-    // $data['address'] = "USA";
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-    // return new TestMail($data);
-    // Mail::to("test@mail.com")->send(new TestMail($data));
-
-    // $users = Cache::rememberForever('users', function () {
-    //     return  User::all();
-    // });
-
-    // $array = [1, 2, 3, 4, 5];
-
-    // $random = Arr::random($array);
-    // dd($random);
-    // return Storage::download('my/rzATX80oUmMSC1jOirERoYfY8i8Ut7SnWsW1SVG6.jpg',"my.jpg");
-    // return Storage::get("");
-
-
-
+require __DIR__.'/auth.php';
+Route::get('/http', function () {
     $url = "http://127.0.0.1:8001/api/users";
 
     Http::post($url,[
@@ -66,10 +31,9 @@ Route::get('/', function () {
     return view('welcome',compact("data"));
 });
 
-
-Route::post('store',function(Request $request){
-
-    Storage::put('my',$request->file);
-    return $request->file;
-
-})->name('store');
+Route::get('click',function(){
+    if (! Gate::allows('isAdmin')) {
+        abort(403);
+    }
+    return "Clicked";
+});
