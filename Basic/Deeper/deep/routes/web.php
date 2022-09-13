@@ -12,7 +12,7 @@ use App\Notifications\TestNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Storage;
-
+use Illuminate\Support\Facades\Http;
 Route::get('create',function(){
    return User::first()->delete();
     // User::create([
@@ -46,9 +46,24 @@ Route::get('/', function () {
 
     // $random = Arr::random($array);
     // dd($random);
-    return Storage::download('my/rzATX80oUmMSC1jOirERoYfY8i8Ut7SnWsW1SVG6.jpg',"my.jpg");
-    return Storage::get("");
-    return view('welcome');
+    // return Storage::download('my/rzATX80oUmMSC1jOirERoYfY8i8Ut7SnWsW1SVG6.jpg',"my.jpg");
+    // return Storage::get("");
+
+
+
+    $url = "http://127.0.0.1:8001/api/users";
+
+    Http::post($url,[
+        "name" => "amader app",
+        "email" => "a@mail.com",
+        "password" => bcrypt(123)
+    ]);
+    $response = Http::get($url);
+
+    // dd();
+
+    $data = json_decode($response->body());
+    return view('welcome',compact("data"));
 });
 
 

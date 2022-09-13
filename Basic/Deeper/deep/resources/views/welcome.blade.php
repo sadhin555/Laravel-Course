@@ -24,10 +24,18 @@
             <h5>{{ $user->name }}</h5>
         @endforeach --}}
 
-        <form action="{{ route('store') }}" method="POST" enctype="multipart/form-data">
+        {{-- @php
+            dd($data)
+        @endphp --}}
+
+        @foreach ($data->users as $user)
+
+            <h4>{{ $user->name }}</h4>
+        @endforeach
+        {{-- <form action="{{ route('store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <input type="file" name="file">
             <button>Submit</button>
-        </form>
+        </form> --}}
    </body>
 </html>
