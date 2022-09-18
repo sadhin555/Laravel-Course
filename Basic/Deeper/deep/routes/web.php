@@ -1,8 +1,10 @@
 <?php
 
+use App\Models\Product;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 
 
@@ -37,3 +39,11 @@ Route::get('click',function(){
     }
     return "Clicked";
 });
+
+
+Route::get('product/{product}',function(Product $product){
+
+    return $product;
+})->name('product')->middleware('can:view,product');
+
+//-
