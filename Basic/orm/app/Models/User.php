@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\UserCreatedEvent;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -38,6 +39,9 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    // protected $dispatchesEvents = [
+    //     "created" => UserCreatedEvent::class
+    // ];
     /**
      * The attributes that should be cast.
      *
@@ -63,4 +67,18 @@ class User extends Authenticatable
     public function skills(){
         return $this->belongsToMany(Skill::class,"skill_users");
     }
+
+    // protected static function booted()
+    // {
+    //     static::created(function ($user) {
+    //         info("I am from call back");
+    //     });
+
+    //     static::deleted(function ($user) {
+    //         info($user);
+    //         info("I am from call back deleted");
+    //     });
+    // }
+
 }
+

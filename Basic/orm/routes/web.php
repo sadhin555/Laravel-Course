@@ -10,6 +10,12 @@ use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpKernel\Profiler\Profile;
 
 Route::get('/', function () {
+    // User::find(2)->delete();
+ return   User::create([
+        "name" => "test111",
+        "email" => "tes111t@mail.cm",
+        "password" => "test",
+    ]);
     return view('welcome');
 });
 Route::get('n-1',function(){
