@@ -11,8 +11,13 @@ class Info extends Model
     use HasFactory;
     protected $guarded = [];
 
-    public function user():BelongsTo
+    // public function user():BelongsTo
+    // {
+    //     return $this->belongsTo(User::class);
+    // }
+
+     public function infoable()
     {
-        return $this->belongsTo(User::class);
+       return $this->morphTo();
     }
 }

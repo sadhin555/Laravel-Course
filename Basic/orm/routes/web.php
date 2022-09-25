@@ -1,18 +1,41 @@
 <?php
 
-use App\Models\District;
-use App\Models\Division;
 use App\Models\Info;
 use App\Models\Post;
-use App\Models\Skill;
 use App\Models\User;
+use App\Models\Admin;
+use App\Models\Skill;
+use App\Models\District;
+use App\Models\Division;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpKernel\Profiler\Profile;
 
 Route::get('/', function () {
 
-    $users = User::all();
-    return view('welcome',compact('users'));
+
+    // $user = User::create([
+    //     "name" => "s2",
+    //     "email" => "s2@milc",
+    //     "password" => "pass",
+    // ]);
+    // $user->info()->create([
+    //     "address" => "bd"
+    // ]);
+
+    // $admin = Admin::create([
+    //     "name" => "s2",
+    //     "email" => "s2@milc",
+    //     "password" => "pass",
+    // ]);
+    // $admin->info()->create([
+    //     "address" => "bd"
+    // ]);
+
+    // return User::with('info')->find(1);
+    return Info::with('infoable')->find(3);
+    return view('poly');
+    // $users = User::all();
+    // return view('welcome',compact('users'));
 });
 Route::get('n-1',function(){
     // $users = User::with('info')->get();
