@@ -4,9 +4,11 @@ use App\Models\Info;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Admin;
+use App\Models\Comment;
 use App\Models\Skill;
 use App\Models\District;
 use App\Models\Division;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpKernel\Profiler\Profile;
 
@@ -32,7 +34,25 @@ Route::get('/', function () {
     // ]);
 
     // return User::with('info')->find(1);
-    return Info::with('infoable')->find(3);
+    // return Info::with('infoable')->find(3);
+
+    // $p1 = Product::create([
+    //     "name" => "p1"
+    // ]);
+    // $p1->comments()->create([
+    //     'body' => "sss"
+    // ]);
+
+    // $p1 = Post::create([
+    //     "name" => "p1",
+    // ]);
+    // $p1->comments()->create([
+    //     'body' => "sefigsdkf"
+    // ]);
+
+    // return Post::with('comments')->find(1);
+
+    return Comment::with('subject')->find(1);
     return view('poly');
     // $users = User::all();
     // return view('welcome',compact('users'));
